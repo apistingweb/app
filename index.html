@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!--[ == Default Meta == ]-->
+    <link rel="stylesheet" href="/style.css" />
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link href="/" rel="canonical" />
+    <meta content="" name="description" />
+    <link href="/base64/favicon.ico" rel="icon" type="image/x-icon" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="blogger" name="generator" />
+    <meta content="#0e1019" name="theme-color" />
+    <meta content="#0e1019" name="msapplication-navbutton-color" />
+    <link href="/base64/" rel="image_src" />
+    <!--[ == Title == ]-->
+    <title>يلا شوت برو - Yalla Shoot Pro الجديد الرسمي | متابعة لحظية لمباريات كورة القدم</title>
+    <!--[ == Required == ]-->
+    <meta content="https://www.facebook.com/yallashoot.pro" property="fb:pages" />
+    <meta content="https://www.facebook.com/yallashoot.pro" property="fb:admins" />
+</head>
+
+
+<body class="fade-in">
+    <!-- HEADER -->
+    <header>
+        <div class="STING-WEB-Header">
+            <!-- LOGO -->
+            <div class="STING-WEB-Header-Logo">
+                <a href="/"><h1 style="font-size: 0;">Yalla Shoot Pro</h1>
+                <img src="/base64/Logo.png" alt="Yalla Shoot Pro"></a>
+            </div>
+            <!-- FAST -->
+            <div class="STING-WEB-Toggle">
+                <span class="STING-WEB-Lang_SVG"></span>
+                <a href="https://api.whatsapp.com/send?text=تصفح%20أحدث%20المباريات%20الآن!" target="_blank"><span class="STING-WEB-Share_SVG"></span></a>
+            </div>
+        </div>
+    </header>
+    <!-- ALERT -->
+    <div class="STING-WEB-Alert">
+        <span class="STING-WEB-Beta_SVG"></span>
+        <span>إصدار تجريبي [ BETA ] وقيد التطوير عليه</span>
+    </div>
+    <!-- TOGGLE -->
+    <div class="STING-WEB-Toggles">
+        <div class="STING-WEB-Toggle-1">
+            <div class="STING-WEB-PIN">
+                <div class="STING-WEB-TITLE_SVG"></div>
+                <h2 class="STING-WEB-TITLE">المباريات</h2>
+            </div>
+            <div class="STING-WEB-Yesterday_SVG" id="-1"></div>
+                <input id="STING-WEB-Visitor" type="date" value="" time=""/>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            let offset = 0;
+                            function getDate(offset = 0) {
+                                let today = new Date();
+                                today.setDate(today.getDate() + offset);
+                                let dd = String(today.getDate()).padStart(2, "0");
+                                let mm = String(today.getMonth() + 1).padStart(2, "0");
+                                let yyyy = today.getFullYear();
+                                return `${yyyy}-${mm}-${dd}`;
+                            }
+                            const visitorInput = document.querySelector("#STING-WEB-Visitor");
+                            visitorInput.value = getDate();  
+                            visitorInput.addEventListener("change", function() {
+                                fetchMatches();
+                            });
+                            document.querySelector(".STING-WEB-Yesterday_SVG").addEventListener("click", function() {
+                                offset -= 1;
+                                visitorInput.value = getDate(offset); 
+                                fetchMatches(); 
+                            });
+                            document.querySelector(".STING-WEB-Tomorrow_SVG").addEventListener("click", function() {
+                                offset += 1;
+                                visitorInput.value = getDate(offset); 
+                                fetchMatches();
+                            });
+                            function getFormattedTimeZone() {
+                                const date = new Date();
+                                const utcOffset = date.getTimezoneOffset();
+                                const hoursOffset = Math.abs(Math.floor(utcOffset / 60));
+                                const minutesOffset = Math.abs(utcOffset % 60);
+                                const sign = utcOffset > 0 ? "-" : "+";
+                                return `${sign}${String(hoursOffset).padStart(2, '0')}:${String(minutesOffset).padStart(2, '0')}`;
+                            }
+                            const formattedTimeZone = getFormattedTimeZone();
+                            visitorInput.setAttribute("time", formattedTimeZone);
+                        });
+                    </script>
+            <div class="STING-WEB-Tomorrow_SVG" id="+1"></div>
+        </div>
+        <!-- FILTER -->
+        <div class="STING-WEB-Toggle-2">
+            <span class="STING-WEB-Filter_SVG"></span>
+            <div id="Matches-All" class="ActiveNow">الكل</div>
+            <div id="Matches-Live" class="LiveNow">مباشر</div>
+            <script>
+                document.querySelectorAll('.STING-WEB-Toggle-2 div').forEach(function(element) {
+                    element.addEventListener('click', function() {
+                        document.querySelector('.STING-WEB-Toggle-2 .ActiveNow').classList.remove('ActiveNow');
+                        this.classList.add('ActiveNow');
+                        filterMatches(); 
+                    });
+                });
+                function filterMatches() {
+                    const filterType = document.querySelector('.STING-WEB-Toggle-2 .ActiveNow').id;
+                    const allMatches = document.querySelectorAll('.STING-WEB-Match');
+
+                    allMatches.forEach(match => {
+                        const isHidden = match.style.display === 'none' || match.closest('.STING-WEB-Cup-Matches.collapsed') !== null;
+                        if (filterType === "Matches-Live") {
+                            if (!match.classList.contains('LIVE') || isHidden) {
+                                match.style.display = 'none';
+                            } else {
+                                match.style.display = 'block';
+                            }
+                        } else {
+                            match.style.display = 'block';
+                        }
+                    });
+                }
+            </script>
+        </div>
+    </div>
+    <!-- MATCHES CENTER -->
+    <div class="STING-WEB-Matches-Center"></div>
+        <script>
+            async function fetchMatches() {
+                const dateInput = document.querySelector("#STING-WEB-Visitor");
+                const dateValue = dateInput.value; 
+                const timeZone = dateInput.getAttribute("time"); 
+                const apiUrl = `https://www.sting-web.com/apis/oo/npm/matches/?date=${dateValue}&lang=27&time=${timeZone}`;
+                const matchesContainer = document.querySelector(".STING-WEB-Matches-Center");
+                matchesContainer.innerHTML = '<div class="STING-WEB-Loading-Matches"><img src="/base64/Loading.gif" style=" width: 40px; height: 40px; text-align: center; display: flex; align-items: center; margin: 0 auto; padding: 40px 0; "/></div>'; 
+                try {
+                    const response = await fetch(apiUrl);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    matchesContainer.innerHTML = '';
+                    if (data["STING-WEB-Matches"] && data["STING-WEB-Matches"].length > 0) {
+                        const cups = {};
+                        data["STING-WEB-Matches"].forEach(match => {
+                            const cupId = match["Cup-id"];
+                            if (!cups[cupId]) {
+                                cups[cupId] = {
+                                    name: match["Cup-Name"],
+                                    logo: match["Cup-Logo"],
+                                    matches: []
+                                };
+                            }
+                            cups[cupId].matches.push(match);
+                        });
+                        for (const cupId in cups) {
+                            const cup = cups[cupId];
+                            const cupDiv = document.createElement("div");
+                            cupDiv.className = "STING-WEB-Cup-Matches"; 
+                            const isCollapsed = localStorage.getItem(`collapsed-${cupId}`) === 'true';
+                            if (isCollapsed) {
+                                cupDiv.classList.add("collapsed"); 
+                            }
+                            const isPinned = localStorage.getItem(`pinned-cup-${cupId}`) === "true";
+                            if (isPinned) {
+                                cupDiv.classList.add("pinned"); 
+                            }
+                            cupDiv.innerHTML = `
+                                <div class="STING-WEB-Cup-Name">
+                                    <div class="STING-WEB-Cup-Name-Right">
+                                        <img src="${cup.logo}" alt="${cup.name} Logo"/>
+                                        <h3>${cup.name}</h3>
+                                    </div>
+                                    <div class="STING-WEB-Cup-Name-Left">
+                                        <div class="STING-WEB-Toggle-Matches-Hide ${isCollapsed ? 'STING-WEB-Show_SVG' : 'STING-WEB-unShow_SVG'}" onclick="toggleMatches('${cupId}')"></div>
+                                        <div class="STING-WEB-Pin-Cup_SVG ${isPinned ? 'STING-WEB-Pinned_SVG' : 'STING-WEB-unPinned_SVG'}" data-cup-id="${cupId}" onclick="togglePinCup('${cupId}')"></div>
+                                    </div>
+                                </div>
+                            `;
+                            cup.matches.forEach(match => {
+                                const teamRightGoal = match["Team-Right"].Goal;
+                                const teamLeftGoal = match["Team-Left"].Goal;
+                                const matchDiv = document.createElement("div");
+                                matchDiv.className = "STING-WEB-Match"; 
+                                matchDiv.innerHTML = `
+                                <a href="/matches/?id=${match["Match-id"]}"><div class="STING-WEB-Match-Right" style="color: ${match["Team-Right"].Color};">
+                                    <div class="Team">
+                                        <img class="Name-Logo" src="${match["Team-Right"].Logo}" alt="${match["Team-Right"].Name} Logo"/>
+                                        <span class="Name-Team">${match["Team-Right"].Name}</span>
+                                    </div>
+                                    <span class="Goal-Team" style="color: ${teamRightGoal > teamLeftGoal ? '#00dd75' : teamRightGoal < teamLeftGoal ? '#ff0000' : '#bfc3d4'};">${match["Team-Right"].Goal}</span>
+                                </div>
+                                <div class="STING-WEB-Match-Center">
+                                    <div class="STING-WEB-Time-Descending" data-start="${match["Time-Start"]}" data-end="${match["Time-End"]}"></div>
+                                    <span class="Match-Status"></span>
+                                    <div class="STING-WEB-Progress">
+                                        <div class="STING-WEB-Progress-Bar" style="width: 0;"></div>  
+                                        <span class="STING-WEB-Time-Display">0</span>
+                                    </div>
+                                </div>
+                                <div class="STING-WEB-Match-Left" style="color: ${match["Team-Left"].Color};">
+                                    <span class="Goal-Team" style="color: ${teamLeftGoal > teamRightGoal ? '#00dd75' : teamLeftGoal < teamRightGoal ? '#ff0000' : '#bfc3d4'};">${match["Team-Left"].Goal}</span>
+                                    <div class="Team">
+                                        <img class="Name-Logo" src="${match["Team-Left"].Logo}" alt="${match["Team-Left"].Name} Logo"/>
+                                        <span class="Name-Team">${match["Team-Left"].Name}</span>
+                                    </div>
+                                </div></a>
+                                `;
+                                const startTime = new Date(match["Time-Start"]);
+                                const endTime = new Date(match["Time-End"]);
+                                const now = new Date();
+                                const statusElement = matchDiv.querySelector(".Match-Status");
+                                const circularProgress = matchDiv.querySelector(".STING-WEB-Progress-Bar");
+                                const progresscontainer = matchDiv.querySelector(".STING-WEB-Progress");
+                                const timeDisplay = matchDiv.querySelector(".STING-WEB-Time-Display");
+                                if (now < startTime) {
+                                    const startHours = startTime.getHours() % 12 || 12; 
+                                    const startMinutes = startTime.getMinutes().toString().padStart(2, '0');
+                                    const ampm = startTime.getHours() >= 12 ? "م" : "ص"; 
+                                    statusElement.innerText = `${startHours}:${startMinutes} ${ampm}`;
+                                    statusElement.classList.add("Not-Start");
+                                    matchDiv.classList.add("NOT");
+                                    progresscontainer.style.display = "none"; 
+                                } else if (now >= startTime && now < endTime) {
+                                    statusElement.innerText = match["Match-Status"];
+                                    statusElement.classList.add("Live"); 
+                                    matchDiv.classList.add("LIVE"); 
+                                    circularProgress.style.display = "block"; 
+                                    startCircularProgress(circularProgress, startTime, endTime, timeDisplay);
+                                } else {
+                                    statusElement.innerText = "انتهت المباراة";
+                                    progresscontainer.style.display = "none"; 
+                                    matchDiv.classList.add("END"); 
+                                    statusElement.classList.add("Ended");
+                                }
+                                cupDiv.appendChild(matchDiv);
+                            });
+                            matchesContainer.appendChild(cupDiv);
+                        }
+                    } else {
+                        matchesContainer.innerHTML = `<p style="text-align: center; padding: 80px 0; background: #191d2db8; width: 93%; margin: 0 auto; border-radius: 8px; ">لا توجد مباريات هامة في هذا اليوم</p>`;
+                    }
+                } catch (error) {
+                    console.error("خطأ في جلب البيانات:", error);
+                }
+            }
+            function togglePinCup(cupId) {
+                const isPinned = localStorage.getItem(`pinned-cup-${cupId}`) === "true";
+                if (isPinned) {
+                    localStorage.removeItem(`pinned-cup-${cupId}`);
+                } else {
+                    localStorage.setItem(`pinned-cup-${cupId}`, "true");
+                }
+                fetchMatches(); 
+            }
+            function toggleMatches(cupId) {
+                const cupElement = document.querySelector(`[data-cup-id="${cupId}"]`).closest(".STING-WEB-Cup-Matches");
+                cupElement.classList.toggle("collapsed");
+
+                const toggleButton = cupElement.querySelector(".STING-WEB-Toggle-Matches-Hide");
+                if (cupElement.classList.contains("collapsed")) {
+                    toggleButton.classList.remove('STING-WEB-unShow_SVG');
+                    toggleButton.classList.add('STING-WEB-Show_SVG');
+                    localStorage.setItem(`collapsed-${cupId}`, 'true');
+                } else {
+                    toggleButton.classList.remove('STING-WEB-Show_SVG');
+                    toggleButton.classList.add('STING-WEB-unShow_SVG');
+                    localStorage.setItem(`collapsed-${cupId}`, 'false'); 
+                }
+            }
+            function startCircularProgress(element, startTime, endTime, timeDisplay) {
+                const totalTime = (endTime - startTime) / 1000; 
+                let progress = (new Date() - startTime) / 1000; 
+                const updateProgress = setInterval(() => {
+                    progress += 1;
+                    const percent = (progress / totalTime) * 100;
+                    if (progress <= 2700) { 
+                        const minutes = Math.floor(progress / 60);
+                        timeDisplay.innerText = minutes + "'";
+                    } else if (progress > 2700 && progress <= 3600) { 
+                        timeDisplay.innerText = "45'"; 
+                    } else if (progress > 3600 && progress <= 6300) { 
+                        const additionalMinutes = Math.floor((progress - 3600) / 60);
+                        timeDisplay.innerText = (45 + additionalMinutes) + "'"; 
+                    } else {
+                        const extraTime = Math.floor((progress - 6300) / 60); 
+                        timeDisplay.innerText = `90+${extraTime}'`; 
+                        timeDisplay.style.right = "-40px"
+                    }
+                    element.style.width = `${percent}%`;
+                    if (progress >= totalTime) {
+                        clearInterval(updateProgress);
+                        element.style.width = '100%'; 
+                        element.style.display = "none"; 
+                    }
+                }, 1000); 
+            }
+            document.addEventListener("DOMContentLoaded", fetchMatches);
+</script>
+
+<div class="STING-WEB-Copyright" style="margin-top: 15px; text-align: center; font-size: 16px; ">Powered by <span style=" color: #00dd75; font-size: 18px; margin: 10px auto; ">STING WEB</span></div><div class="STING-WEB-Clear" style="padding: 60px 0;"></div>
+
+    <!-- MOBILE -->
+    <div class="STING-WEB-Mobile">
+            <!-- MATCHES -->
+        <a href="/" onclick="setActive('Matches')"><div class="STING-WEB-Mobile-Ico" id="Matches"><span class="STING-WEB-Matches_SVG"></span><span class="active-span">المباريات</span></div></a>
+            <!-- TVS -->
+        <a href="/channels/" onclick="setActive('Tvs')"><div class="STING-WEB-Mobile-Ico" id="Tvs"><span class="STING-WEB-Tv_SVG"></span><span>القنوات</span></div> </a>
+            <!-- STANDINGS -->
+        <a href="/standings/" onclick="setActive('Ranking')"><div class="STING-WEB-Mobile-Ico" id="Ranking"><span class="STING-WEB-Ranking_SVG"></span><span>الترتيب</span></div></a>
+            <!-- NEWS -->
+        <!-- <a href="/news/" onclick="setActive('News')"><div class="STING-WEB-Mobile-Ico" id="News"><span class="STING-WEB-News_SVG"></span><span>الأخبار</span></div></a> -->
+            <!-- SETTINGS -->
+        <!-- <a href="/settings/" onclick="setActive('Settings')"><div class="STING-WEB-Mobile-Ico" id="Settings"><span class="STING-WEB-Setting_SVG"></span><span>الإعدادات</span></div></a> -->
+    </div><style>.STING-WEB-Matches_SVG { background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 17C8.41015 17 5.5 14.0899 5.5 10.5V4.55556C5.5 4.03739 5.5 3.77831 5.59369 3.57738C5.69305 3.36431 5.86431 3.19305 6.07738 3.09369C6.27831 3 6.53739 3 7.05556 3H16.9444C17.4626 3 17.7217 3 17.9226 3.09369C18.1357 3.19305 18.3069 3.36431 18.4063 3.57738C18.5 3.77831 18.5 4.03739 18.5 4.55556V10.5C18.5 14.0899 15.5899 17 12 17ZM12 17V21M17 21H7M22 5V10M2 5V10' stroke='%2300dd75' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") }</style>
+    <script>
+        function setActive(activeId) {
+            const icons = document.querySelectorAll('.STING-WEB-Mobile-Ico');
+            icons.forEach(icon => {
+                icon.classList.remove('active');
+                const span = icon.querySelector('span:last-child');
+                span.classList.remove('active-span');
+            });
+            const activeIcon = document.getElementById(activeId);
+            if (activeIcon) {
+                activeIcon.classList.add('active');
+                const activeSpan = activeIcon.querySelector('span:last-child');
+                activeSpan.classList.add('active-span');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            setActive('Matches');
+        });
+    </script>
+</body>
+</html> 
