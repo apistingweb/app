@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يلا شوت برو - Yalla Shoot Pro الجديد الرسمي | متابعة لحظية لمباريات كورة القدم</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="fade-in">
+    <!-- HEADER -->
+    <header>
+        <div class="STING-WEB-Header">
+            <!-- LOGO -->
+            <div class="STING-WEB-Header-Logo">
+                <a href="/"><h1 style="font-size: 0;">Yalla Shoot Pro</h1>
+                <img src="/base64/Logo.png" alt="Yalla Shoot Pro"></a>
+            </div>
+            <!-- FAST SETTING -->
+            <div class="STING-WEB-Toggle">
+                <span class="STING-WEB-Lang_SVG"></span>
+                <a href="https://api.whatsapp.com/send?text=تصفح%20أحدث%20المباريات%20الآن!" target="_blank"><span class="STING-WEB-Share_SVG"></span></a>
+            </div>
+        </div>
+    </header>
+    <!-- ALERT -->
+    <div class="STING-WEB-Alert">
+        <span class="STING-WEB-Beta_SVG"></span>
+        <span>إصدار تجريبي [ BETA ] وقيد التطوير عليه</span>
+    </div>
+
+
+
+<style>
+
+.STING-WEB-Match-TiTle {
+    width: 85%;
+    margin: 0 auto;
+    font-size: 16px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.STING-WEB-Match-Card {
+    background-image: url("/base64/Match-BG.png");
+    padding: 10px 0;
+    width: 93%;
+    margin: 0 auto;
+    border-radius: 12px;
+    background-size: cover;
+}
+.STING-WEB-Card-Vs {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    align-items: center;
+    justify-items: center;
+    padding: 10px 0;
+}
+.STING-WEB-Card-Vs-Right, .STING-WEB-Card-Vs-Left, .STING-WEB-Card-Vs-Center {
+    display: grid;
+    gap: 12px;
+    text-align: center;
+    justify-items: center;
+}
+.STING-WEB-Card-Vs-Right img,.STING-WEB-Card-Vs-Left img {
+    width: 50px;
+    height: 50px;
+}
+.STING-WEB-Card-Vs-Center-Top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #0e1019;
+}
+.STING-WEB-Card-Vs-Right span,.STING-WEB-Card-Vs-Left span {
+    font-size: 15px;
+}
+.STING-WEB-Card-Vs-Center-Top img {
+    width: 30px;
+    height: 30px;
+}
+.STING-WEB-Card-Vs-Center-Top span {
+    font-size: 15px;
+}
+.STING-WEB-Card-Vs-Center .VS {
+    font-size: 40px;
+}
+.Time-Start {
+    background: #0e1019;
+    padding: 2px 10px;
+    border-radius: 6px;
+}
+.STING-WEB-Card-Vs .Goal {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #0e1019;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    font-weight: 600;
+    background: #0e1019;
+}
+.STING-WEB-Event-Toggle {
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    margin: 20px auto;
+    width: 93%;
+}
+.STING-WEB-Event-Toggle div {
+    background: #191d2d;
+    padding: 5px 14px;
+    border-radius: 8px;
+}
+
+
+
+
+
+.STING-WEB-Events-Match {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    margin-bottom: 8px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+
+.STING-WEB-Events-Match:nth-child(odd) {
+    background: #2b2f3a; 
+}
+
+
+.STING-WEB-Event-Match-Center {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+
+.STING-WEB-Event-Match-Right, .STING-WEB-Event-Match-Left {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.STING-WEB-Event-Match-Left {
+    justify-content: flex-end;
+}
+.STING-WEB-Player-Names {
+    display: grid;
+    gap: 0;
+    font-size: 10px;
+}
+
+.STING-WEB-Event-Player {
+    display: grid;
+}
+
+.STING-WEB-Event-Match-Left .STING-WEB-Event-Player {
+    order: 1;
+}
+.STING-WEB-Event-Match-Left .STING-WEB-Extra-Players {
+    order: 2;
+}
+
+.STING-WEB-Events {
+    display: grid;
+    width: 93%;
+    margin: 0 auto;
+}
+
+.STING-WEB-Events-Match img {
+    width: 25px;
+    height: 25px;
+}
+
+.STING-WEB-Event-Match-Center img.event-logo {
+    width: 15px;
+    height: 20px;
+}
+
+.STING-WEB-Details h3 {
+    font-size: 15px;
+    margin: 8px auto;
+    width: 88%;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    color: #707488;
+}
+.STING-WEB-Details h3:before {
+    content: "";
+    width: 15px;
+    height: 5px;
+    background: #707488;
+    display: block;
+    border-radius: 50px;
+}
+
+.STING-WEB-Details {
+    width: 93%;
+    margin: 0 auto;
+}
+
+.STING-WEB_MatchInfo-Table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #191d2d;
+    border-radius: 8px;
+}
+.STING-WEB_MatchInfo-Table tr {
+    border-bottom: 1px solid #0e1019;
+    font-size: 15px;
+}
+.STING-WEB_MatchInfo-Table td, .STING-WEB_MatchInfo-Table th {
+    font-weight: 500;
+    padding: 12px;
+    line-height: 25px;
+}
+.STING-WEB_MatchInfo-Table td {
+    border-right: 1px solid #0e1019;
+}
+.STING-WEB-Last-Match {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    align-items: center;
+    padding: 7px;
+    border-radius: 8px;
+    background: #191d2d;
+    width: 93%;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.STING-WEB-Last-Match-Right img,.STING-WEB-Last-Match-Left img {
+    width: 30px;
+    height: 30px;
+}
+.STING-WEB-Last-Match-Right, .STING-WEB-Last-Match-Left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+.STING-WEB-Last-Match-Right span,.STING-WEB-Last-Match-Left span  {
+    font-size: 13px;
+}
+.STING-WEB-Last-Match-Center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.STING-WEB-Last-Match-Center img {
+    width: 30px;
+    height: 30px;
+}
+.STING-WEB-Last-Match .Goal {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+}
+.STING-WEB-Last-Match-Date, .STING-WEB-Last-Match-Time {
+    font-size: 12px;
+    padding-top: 6px;
+    border-top: 2px solid #0e1019;
+    border-radius: 15px;
+}
+
+.STING-WEB-Last-Match-Status {
+    font-size: 13px;
+    padding-top: 6px;
+
+}
+.STING-WEB-Last-Match-Time:before {
+    content: "بتوقيت جهازك  - ";
+    font-size: 8px;
+    color: #FF9800;
+}
+
+.STING-WEB_MatchInfo-Table th {
+    color: #707488;
+}
+
+
+.STING-WEB-Match-Card, .STING-WEB-Statistics, .STING-WEB-Events {
+    display: none;
+}
+
+.STING-WEB-Match-Card,.STING-WEB-Details {
+    display: block; 
+
+}
+
+
+
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="STING-WEB-Match-TiTle"></h2>
+
+<div class="STING-WEB-Match-Card"></div>
+
+
+<div class="STING-WEB-Event-Toggle">
+    <div onclick="showSection('STING-WEB-Details')">التفاصيل</div>
+    <div onclick="showSection('STING-WEB-Events')">الأحداث</div>
+    <div onclick="showSection('STING-WEB-Players')">التشكيلة</div>
+    <div onclick="showSection('STING-WEB-Video')">ملخص المباراة</div>
+</div>
+
+
+
+    <div class="STING-WEB-Details"></div>
+    <div class="STING-WEB-Events"></div>
+    <div class="STING-WEB-Players"></div>
+    <div class="STING-WEB-Video"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+// احصل على الـ ID من عنوان الرابط
+const urlParams = new URLSearchParams(window.location.search);
+const matchID = urlParams.get('id');
+
+// دالة لتحويل المنطقة الزمنية إلى الفارق الزمني
+function getTimeZoneOffset() {
+    const date = new Date();
+    const timeZoneOffset = date.getTimezoneOffset();
+    const hours = Math.floor(Math.abs(timeZoneOffset) / 60);
+    const minutes = Math.abs(timeZoneOffset) % 60;
+    const sign = timeZoneOffset <= 0 ? "+" : "-";
+    return `${sign}${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+}
+
+
+
+// استخدام الفارق الزمني في طلب الـ API
+const timeZone = getTimeZoneOffset();
+
+// دالة لجلب بيانات المباراة
+function fetchMatchData(matchID) {
+    const apiURL = `https://www.sting-web.com/apis/oo/npm/events/?MatchID=${matchID}&time=${encodeURIComponent(timeZone)}`;
+
+    fetch(apiURL)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data['STING-WEB-Match-Details']) {
+                // معالجة البيانات المستلمة
+                const matchDetails = data['STING-WEB-Match-Details'];
+                displayMatchCard(matchDetails['Match-Card']);
+                displayMatchDetails(matchDetails['Match-Card'], matchDetails['Match-Info']); // تمرير Match-Info
+                displayMatchEvents(matchDetails); // تمرير matchDetails
+            } else {
+                console.error("لم يتم العثور على بيانات المباراة.");
+            }
+        })
+        .catch(error => console.error('حدث خطأ أثناء جلب البيانات:', error));
+}
+
+
+function startCountdown(selector, matchDateStr, matchTimeStr) {
+    const timeElement = document.querySelector(selector);
+    const matchDate = new Date(`${matchDateStr}T${matchTimeStr}`);
+    const countdownInterval = setInterval(() => {
+        const now = new Date();
+        const timeDiff = matchDate - now;
+        const twoHoursInMs = 2 * 60 * 60 * 1000; 
+
+        if (timeDiff > 0) {
+            let countdownText = '';
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            if (days > 0) {
+                countdownText += `${days}:`;
+            }
+            if (hours > 0 || days > 0) {
+                countdownText += `${hours}:`;
+            }
+
+            countdownText += `${minutes}:${seconds}`;
+            timeElement.textContent = countdownText;
+        } else {
+            // تحقق إذا كانت المباراة قد انتهت
+            const timeSinceMatchStarted = now - matchDate;
+            if (timeSinceMatchStarted > twoHoursInMs) {
+                // المباراة انتهت
+                clearInterval(countdownInterval);
+                timeElement.textContent = "انتهت";
+            } else {
+                // المباراة بدأت، عرض "مباشر"
+                clearInterval(countdownInterval);
+                timeElement.textContent = "مباشر";
+                timeElement.style.color = "red";
+                timeElement.style.animation = "800ms ease-in-out infinite blinker";
+            }
+        }
+    }, 1000);
+}
+
+
+
+
+function displayMatchCard(matchCard) {
+    const cardDiv = document.querySelector('.STING-WEB-Match-Card');
+    const TiTleDiv = document.querySelector('.STING-WEB-Match-TiTle');
+    TiTleDiv.innerText = `تفاصيل مباراة ${matchCard['Team-Left']['Name']} و ${matchCard['Team-Right']['Name']} في ${matchCard['Cup-Name']}.`;
+
+    cardDiv.innerHTML = `
+    <div class="STING-WEB-Card-Vs-Center-Top">
+        <img src="${matchCard['Cup-Logo']}" alt="${matchCard['Cup-Name']}"/>
+        <span>${matchCard['Cup-Name']}</span>
+    </div>
+    <div class="STING-WEB-Card-Vs">
+        <div class="STING-WEB-Card-Vs-Right">
+            <img src="${matchCard['Team-Right']['Logo']}" alt="${matchCard['Team-Right']['Name']}"/>
+            <span>${matchCard['Team-Right']['Name']}</span>
+            <span class="Goal">${matchCard['Team-Right']['Goal']}</span>
+        </div>
+        <div class="STING-WEB-Card-Vs-Center">
+            <span class="VS">VS</span>
+            <span class="Time-Start" data-date="${matchCard['Date']} ${matchCard['Time']}">${matchCard['Time']}</span>
+        </div>
+        <div class="STING-WEB-Card-Vs-Left">
+            <img src="${matchCard['Team-Left']['Logo']}" alt="${matchCard['Team-Left']['Name']}"/>
+            <span>${matchCard['Team-Left']['Name']}</span>
+            <span class="Goal">${matchCard['Team-Left']['Goal']}</span>
+        </div>
+    </div>
+    `;
+    startCountdown('.Time-Start', matchCard['Date'], matchCard['Time']);
+}
+
+
+
+// دالة لعرض تفاصيل المباراة
+function displayMatchDetails(matchCard, matchInfo) {
+    const detailsDiv = document.querySelector('.STING-WEB-Details');
+    const teamRight = matchCard['Team-Right'];
+    const teamLeft = matchCard['Team-Left'];
+
+    let detailsContent = `<table class="STING-WEB_MatchInfo-Table"><tbody>`;
+
+    // إضافة البطولة إذا كانت موجودة
+    if (matchCard['Cup-Name'] && matchCard['Cup-Name'] !== 'N/A') {
+        detailsContent += `
+            <tr>
+                <th>البطولة</th>
+                <td>${matchCard['Cup-Name']}</td>
+            </tr>`;
+    }
+
+    // إضافة الملعب إذا كان موجودًا
+    if (matchInfo['Club-Name'] && matchInfo['Club-Name'] !== 'N/A') {
+        detailsContent += `
+            <tr>
+                <th>الملعب</th>
+                <td>${matchInfo['Club-Name']}</td>
+            </tr>`;
+    }
+
+    // إضافة اسم القناة إذا كان موجودًا
+    if (matchInfo['Tv'] && matchInfo['Tv'] !== 'N/A') {
+        detailsContent += `
+            <tr>
+                <th>اسم القناة</th>
+                <td>${matchInfo['Tv']}</td>
+            </tr>`;
+    }
+
+    // إضافة المعلق إذا كان موجودًا
+    if (matchInfo['Match-Referee'] && matchInfo['Match-Referee'] !== 'N/A') {
+        detailsContent += `
+            <tr>
+                <th>المعلق</th>
+                <td>${matchInfo['Match-Referee']}</td>
+            </tr>`;
+    }
+
+    detailsContent += `</tbody></table>`;
+    detailsDiv.innerHTML = detailsContent;
+
+    // جلب آخر 5 مباريات
+    const matchID = matchCard['Match-id'];
+    const timeZone = matchCard['Time-Zone']; // تأكد من أن هذه القيمة صحيحة
+    const apiURL = `https://www.sting-web.com/apis/oo/npm/h2h/?MatchID=${matchID}&time=${encodeURIComponent(timeZone)}`;
+
+    fetch(apiURL)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const matches = data["STING-WEB-Match-Details"];
+            const upcomingMatch = matches.find(match => {
+                const matchDateTime = new Date(`${match.Date}T${match.Time}${match['Time-Zone']}`);
+                return matchDateTime > new Date(); // تحقق مما إذا كانت المباراة في المستقبل
+            });
+
+            // عرض المباراة القادمة إذا وجدت
+            if (upcomingMatch) {
+                const upcomingContent = `
+                <h3>المباراة القادمة بين الفريقين</h3>
+                <div class="STING-WEB-Last-Match upcoming-match">
+                <div class="STING-WEB-Last-Match-Right">
+                    <img src="${upcomingMatch['Team-Right']['Logo']}" alt="${upcomingMatch['Team-Right']['Name']}"/>
+                    <span>${upcomingMatch['Team-Right']['Name']}</span>
+                    <span class="Goal">${upcomingMatch['Team-Right']['Goal']}</span>
+                </div>
+
+                <div class="STING-WEB-Last-Match-Center">
+                    <img src="${upcomingMatch['Cup-Logo']}" alt="${upcomingMatch['Cup-Name']}" />
+                </div>
+
+                <div class="STING-WEB-Last-Match-Left">
+                    <span class="Goal">${upcomingMatch['Team-Left']['Goal']}</span>
+                    <span>${upcomingMatch['Team-Left']['Name']}</span>
+                    <img src="${upcomingMatch['Team-Left']['Logo']}" alt="${upcomingMatch['Team-Left']['Name']}"/>
+                </div>
+                    <div class="STING-WEB-Last-Match-Date">${upcomingMatch['Date']}</div>
+                    <div class="STING-WEB-Last-Match-Status">${upcomingMatch['Match-Status']}</div>
+                    <div class="STING-WEB-Last-Match-Time">${upcomingMatch['Time']}</div>
+                </div>`;
+                detailsDiv.innerHTML += upcomingContent;
+            }
+
+            const matchesDiv = document.createElement('div');
+            matchesDiv.innerHTML += '<h3>آخر المباريات بين الفريقين</h3>';
+            const recentMatches = matches.filter(match => {
+                const matchDateTime = new Date(`${match.Date}T${match.Time}${match['Time-Zone']}`);
+                return matchDateTime <= new Date(); // الحصول على المباريات التي جرت في الماضي
+            }).slice(0, 5); // الحصول على آخر 5 مباريات فقط
+
+            recentMatches.forEach(match => {
+                const matchContent = `
+            <div class="STING-WEB-Last-Match">
+                <div class="STING-WEB-Last-Match-Right">
+                    <img src="${match['Team-Right']['Logo']}" alt="${match['Team-Right']['Name']}"/>
+                    <span>${match['Team-Right']['Name']}</span>
+                    <span class="Goal">${match['Team-Right']['Goal']}</span>
+                </div>
+
+                <div class="STING-WEB-Last-Match-Center">
+                    <img src="${match['Cup-Logo']}" alt="${match['Cup-Name']}" />
+                </div>
+
+                <div class="STING-WEB-Last-Match-Left">
+                    <span class="Goal">${match['Team-Left']['Goal']}</span>
+                    <span>${match['Team-Left']['Name']}</span>
+                    <img src="${match['Team-Left']['Logo']}" alt="${match['Team-Left']['Name']}"/>
+                </div>
+                <div class="STING-WEB-Last-Match-Date">${match['Date']}</div>
+                    <div class="STING-WEB-Last-Match-Status">${match['Match-Status']}</div>
+                    <div class="STING-WEB-Last-Match-Time">${match['Time']}</div>
+                </div>`;
+                matchesDiv.innerHTML += matchContent;
+            });
+            detailsDiv.appendChild(matchesDiv);
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+}
+
+
+
+
+function displayMatchEvents(matchDetails) {
+    const eventsDiv = document.querySelector('.STING-WEB-Events');
+
+    // إنشاء div جديد للويدجتس
+    const widgetsDiv = document.createElement('div');
+    widgetsDiv.classList.add('STING-WEB-Match-Widget');
+
+    const matchWidgets = matchDetails["Match-Widgets"];
+
+    // التحقق من وجود الويدجت رقم 2 وإضافته
+    if (matchWidgets && matchWidgets.length > 1) {
+        const widget = matchWidgets[1]; // الويدجت رقم 2 (الفهرس 1)
+        const widgetUrl = widget['WidgetUrl'].replace("=light","=dark");
+
+        // إضافة iframe للويدجت رقم 2
+        const widgetIframe = `
+            <iframe src="${widgetUrl}" class="event-widget" style="width:100%; height:80px; border:none;"></iframe>
+        `;
+        
+        widgetsDiv.innerHTML += widgetIframe; // استخدام += لإضافة الويدجت
+    }
+
+    // إضافة widgetsDiv إلى العنصر الرئيسي في الصفحة
+    eventsDiv.appendChild(widgetsDiv); // أو أي عنصر آخر ترغب في إضافته إليه
+
+    // إضافة تفاصيل الأحداث (مثل الأهداف، الأحداث الأخرى)
+    const matchEvents = matchDetails['Match-Events'];
+    
+    // التحقق مما إذا كانت أحداث المباراة فارغة
+    if (!matchEvents || matchEvents.length === 0) {
+        const noEventsMessage = document.createElement('div');
+        noEventsMessage.textContent = "لا يوجد أحداث في الوقت الحالي ...";
+        noEventsMessage.style.textAlign = "center";
+        noEventsMessage.style.color = "#fff"; // يمكنك تخصيص لون الرسالة حسب رغبتك
+        noEventsMessage.style.fontSize = "14px"; // يمكنك تخصيص حجم الخط حسب رغبتك
+        noEventsMessage.style.margin = "15px 15px 25px 15px"; // يمكنك تخصيص حجم الخط حسب رغبتك
+        eventsDiv.appendChild(noEventsMessage);
+        return; // الخروج من الدالة إذا كانت الأحداث فارغة
+    }
+
+    matchEvents.forEach(event => {
+        if (!event['Event-Time']) return;
+
+        const eventElement = document.createElement('div');
+        eventElement.classList.add('STING-WEB-Events-Match');
+        eventElement.style.order = event['Order'];
+
+        // العمود الأوسط يحتوي على وقت الحدث، لوجو الحدث
+        const centerElement = document.createElement('div');
+        centerElement.classList.add('STING-WEB-Event-Match-Center');
+
+        centerElement.innerHTML = `
+            <span style="width: 30px;height: 25px;display: flex;font-size: 12px;border: 1px solid #dddddd63;align-items: center;justify-content: center;border-radius: 8px;">
+                ${event['Event-Time']}
+            </span>
+            <img src="${event['Event-Logo']}" alt="${event['Event-Name']}" class="event-logo"/>
+        `;
+
+        // العمود الأيسر
+        const leftElement = document.createElement('div');
+        leftElement.classList.add('STING-WEB-Event-Match-Left');
+
+        // العمود الأيمن
+        const rightElement = document.createElement('div');
+        rightElement.classList.add('STING-WEB-Event-Match-Right');
+
+        // تحقق من وجود لاعب للحدث
+        if (event['Event-Player']) {
+            const player = event['Event-Player'];
+            const playerHTML = `
+                <div class="STING-WEB-Event-Player">
+                    <img src="${player['IMG']}" alt="${player['Name']}" class="player-img"/>
+                </div>
+                ${player['Extra'] && player['Extra'].length > 0 ? `
+                    <div class="STING-WEB-Extra-Players">
+                        ${player['Extra'].map(extraPlayer => `
+                            <div class="STING-WEB-Event-Player">
+                                <img src="${extraPlayer['IMG']}" alt="${extraPlayer['Name']}" class="extra-player-img"/>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="STING-WEB-Player-Names">
+                        <span style=" color: #00dc75c4; ">${player['Name']}</span>
+                        ${player['Extra'].map(extraPlayer => `
+                            <span style=" color: #ff5500c7; ">${extraPlayer['Name']}</span>
+                        `).join('')}
+                    </div>
+                ` : `
+                    <div class="STING-WEB-Player-Names">
+                        <span style=" color: #00dc75c4; ">${player['Name']}</span>
+                    </div>
+                `}
+            `;
+
+            // إضافة اللاعب إلى الجهة الصحيحة
+            if (event['Place'] === 'right') {
+                rightElement.innerHTML = playerHTML;
+            } else if (event['Place'] === 'left') {
+                leftElement.innerHTML = playerHTML;
+            }
+        }
+
+        // إضافة الأعمدة الثلاثة إلى الحدث
+        eventElement.appendChild(rightElement);
+        eventElement.appendChild(centerElement);
+        eventElement.appendChild(leftElement);
+
+        // إضافة الحدث إلى DOM
+        eventsDiv.appendChild(eventElement);
+    });
+}
+
+
+// دالة للتبديل بين الأقسام
+function showSection(sectionClass) {
+    const sections = document.querySelectorAll('.STING-WEB-Details, .STING-WEB-Statistics, .STING-WEB-Events');
+    sections.forEach(sec => sec.style.display = 'none');
+
+    document.querySelector(`.${sectionClass}`).style.display = 'block';
+}
+
+// بدء جلب البيانات
+if (matchID) {
+    fetchMatchData(matchID);
+} else {
+    console.error('لم يتم العثور على معرف المباراة في الرابط.');
+}
+
+
+
+</script>
+
+
+
+
+
+
+<div class="STING-WEB-Copyright" style="margin-top: 15px; text-align: center; font-size: 16px; ">Powered by <span style=" color: #00dd75; font-size: 18px; margin: 10px auto; ">STING WEB</span></div>
+<div class="STING-WEB-Clear" style="padding: 60px 0;"></div>
+
+<!-- MOBILE -->
+    <div class="STING-WEB-Mobile">
+        <!-- MATCHES -->
+    <a href="/" onclick="setActive('Matches')"><div class="STING-WEB-Mobile-Ico" id="Matches"><span class="STING-WEB-Matches_SVG"></span><span class="active-span">المباريات</span></div></a>
+        <!-- TVS -->
+    <a href="/channels/" onclick="setActive('Tvs')"><div class="STING-WEB-Mobile-Ico" id="Tvs"><span class="STING-WEB-Tv_SVG"></span><span>القنوات</span></div> </a>
+        <!-- STANDINGS -->
+    <a href="/standings/" onclick="setActive('Ranking')"><div class="STING-WEB-Mobile-Ico" id="Ranking"><span class="STING-WEB-Ranking_SVG"></span><span>الترتيب</span></div></a>
+        <!-- NEWS -->
+    <!-- <a href="/news/" onclick="setActive('News')"><div class="STING-WEB-Mobile-Ico" id="News"><span class="STING-WEB-News_SVG"></span><span>الأخبار</span></div></a> -->
+        <!-- SETTINGS -->
+    <!-- <a href="/settings/" onclick="setActive('Settings')"><div class="STING-WEB-Mobile-Ico" id="Settings"><span class="STING-WEB-Setting_SVG"></span><span>الإعدادات</span></div></a> -->
+</div>
+</body>
+</html> 
