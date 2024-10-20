@@ -37,22 +37,18 @@
             </div>
         </div>
     </header>
-    <!-- ALERT -->
-    <div class="STING-WEB-Alert">
-        <span class="STING-WEB-Beta_SVG"></span>
-        <span>إصدار تجريبي [ BETA ] وقيد التطوير عليه</span>
-    </div>
+
 <!-- TVs -->
 <style>
-.STING-WEB-Video-Mo { position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: #000; display: none; }
-.STING-WEB-Mo-Play { position: relative; width: 100%; height: 100%; margin: 0 auto; }
-.STING-WEB-Close-Tv{ position: absolute; top: 0; left: 0; color: #fff; font-size: 40px; font-weight: bold; cursor: pointer; background: #ff0000; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 0 8px 8px 0; z-index: 99999; }
-.STING-WEB-Tv_SVG { background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 4.98951C5 4.01835 5 3.53277 5.20249 3.2651C5.37889 3.03191 5.64852 2.88761 5.9404 2.87018C6.27544 2.85017 6.67946 3.11953 7.48752 3.65823L18.0031 10.6686C18.6708 11.1137 19.0046 11.3363 19.1209 11.6168C19.2227 11.8621 19.2227 12.1377 19.1209 12.383C19.0046 12.6635 18.6708 12.886 18.0031 13.3312L7.48752 20.3415C6.67946 20.8802 6.27544 21.1496 5.9404 21.1296C5.64852 21.1122 5.37889 20.9679 5.20249 20.7347C5 20.467 5 19.9814 5 19.0103V4.98951Z' stroke='%2300dd75' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") }video { width: 100%; height: 100%; }
-.STING-WEB-Channels { display: grid; gap: 8px; align-items: center; justify-items: center; width: 93%; margin: 15px auto; }
-.STING-WEB-Channel { display: flex; align-items: center; justify-items: center; height: 32px; gap: 12px; border: 2px solid #bfc3d429; border-radius: 12px; position: relative; width: 100%; padding: 2px 10px; }
-.STING-WEB-Channel span { font-size: 14px; }
-.STING-WEB-Channel img { width: 30px; height: 30px; border-radius: 6px; }
-.noted:after { content: "NO"; background: #ff0000; position: absolute; left: 0; top: 0; font-size: 12px; color: #fff; padding: 2px 5px; border-radius: 8px 0 5px 0; }
+    .STING-WEB-Video-Mo { position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: #000; display: none; }
+    .STING-WEB-Mo-Play { position: relative; width: 100%; height: 75%; margin: 0 auto; }
+    .STING-WEB-Mo-Play:after { content: "شاهد جميع المباريات بدون تقطيع فقط وحصريا علي تطبيق - Dawrez Play"; color: #fff; z-index: 999; position: absolute; left: 0; right: 0; text-align: center; font-size: 18px; width: 80%; margin: 0 auto; line-height: 33px; margin-top: 20px; }
+    .STING-WEB-Tv_SVG { background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 4.98951C5 4.01835 5 3.53277 5.20249 3.2651C5.37889 3.03191 5.64852 2.88761 5.9404 2.87018C6.27544 2.85017 6.67946 3.11953 7.48752 3.65823L18.0031 10.6686C18.6708 11.1137 19.0046 11.3363 19.1209 11.6168C19.2227 11.8621 19.2227 12.1377 19.1209 12.383C19.0046 12.6635 18.6708 12.886 18.0031 13.3312L7.48752 20.3415C6.67946 20.8802 6.27544 21.1496 5.9404 21.1296C5.64852 21.1122 5.37889 20.9679 5.20249 20.7347C5 20.467 5 19.9814 5 19.0103V4.98951Z' stroke='%2300dd75' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") }video { width: 100%; height: 100%; }
+    .STING-WEB-Channels { display: grid; gap: 8px; align-items: center; justify-items: center; width: 93%; margin: 15px auto; }
+    .STING-WEB-Channel { display: flex; align-items: center; justify-items: center; height: 32px; gap: 12px; border: 2px solid #1f2429cc; border-radius: 12px; position: relative; width: 100%; padding: 2px 10px; background: #15191d70; }
+    .STING-WEB-Channel span { font-size: 14px; }
+    .STING-WEB-Channel img { width: 30px; height: 30px; border-radius: 6px; object-fit: contain; }
+    .noted:after { content: "NO"; background: #ff0000; position: absolute; left: 0; top: 0; font-size: 12px; color: #fff; padding: 2px 5px; border-radius: 8px 0 5px 0; }
 </style>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <div id="STING-WEB-Tvs" style="width: 90%;margin: 0 auto;"><div class="STING-WEB-PIN" style="width: 90%; margin: 0 auto;"><div class="STING-WEB-TITLE_SVG"></div><h2 class="STING-WEB-TITLE">القنوات</h2></div>
@@ -109,10 +105,8 @@
             <span>Sharqa Sports 1</span></div>
     </div>
 </div>
-
 <div id="videoModal" class="STING-WEB-Video-Mo" >
     <div class="STING-WEB-Mo-Play">
-        <span class="STING-WEB-Close-Tv" onclick="closeModal()">&times;</span>
         <video id="videoPlayer" controls></video>
         <iframe id="videoFrame" width="100%" height="100%" frameborder="0" allowfullscreen style="display:none;"></iframe>
     </div>
@@ -151,15 +145,11 @@
 
                 "Sharqa-Sports-1": "https://svs.itworkscdn.net/smc4sportslive/smc4tv.smil/smc4sportspublish/smc4tv_source/chunks.m3u8",
 
-
-            
-
             };
         const videoUrl = m3u8Urls[channelId];
         if (videoUrl) {
             const videoPlayer = document.getElementById('videoPlayer');
             const videoFrame = document.getElementById('videoFrame');
-
             if (videoUrl.endsWith('.m3u8')) {
                 if (Hls.isSupported()) {
                     const hls = new Hls();
@@ -175,7 +165,6 @@
                 videoPlayer.style.display = 'none';
                 videoFrame.style.display = 'block';
             }
-
             document.getElementById('videoModal').style.display = 'flex';
         }
     }
@@ -187,21 +176,27 @@
         videoFrame.src = '';
         document.getElementById('videoModal').style.display = 'none';
     }
+    window.onload = function () {
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.pushState(null, null, location.href);
+            closeModal();
+        };
+    };
 </script>
-<div class="STING-WEB-Copyright" style="margin-top: 15px; text-align: center; font-size: 16px; ">Powered by <span style=" color: #00dd75; font-size: 18px; margin: 10px auto; ">STING WEB</span></div><div class="STING-WEB-Clear" style="padding: 60px 0;"></div>
-    <!-- MOBILE -->
-    <div class="STING-WEB-Mobile">
-            <!-- MATCHES -->
-        <a href="/" onclick="setActive('Matches')"><div class="STING-WEB-Mobile-Ico" id="Matches"><span class="STING-WEB-Matches_SVG"></span><span>المباريات</span></div></a>
-            <!-- TVS -->
-        <a href="/channels/" onclick="setActive('Tvs')"><div class="STING-WEB-Mobile-Ico" id="Tvs"><span class="STING-WEB-Tv_SVG"></span><span class="active-span">القنوات</span></div> </a>
-            <!-- STANDINGS -->
-        <a href="/standings/" onclick="setActive('Ranking')"><div class="STING-WEB-Mobile-Ico" id="Ranking"><span class="STING-WEB-Ranking_SVG"></span><span>الترتيب</span></div></a>
-            <!-- NEWS -->
-        <!-- <a href="/news/" onclick="setActive('News')"><div class="STING-WEB-Mobile-Ico" id="News"><span class="STING-WEB-News_SVG"></span><span>الأخبار</span></div></a> -->
-            <!-- SETTINGS -->
-        <!-- <a href="/settings/" onclick="setActive('Settings')"><div class="STING-WEB-Mobile-Ico" id="Settings"><span class="STING-WEB-Setting_SVG"></span><span>الإعدادات</span></div></a> -->
-    </div>
+<!-- MOBILE -->
+<div class="STING-WEB-Mobile">
+        <!-- MATCHES -->
+    <a href="/" onclick="setActive('Matches')"><div class="STING-WEB-Mobile-Ico" id="Matches"><span class="STING-WEB-Matches_SVG"></span><span>المباريات</span></div></a>
+        <!-- TVS -->
+    <a href="/channels/" onclick="setActive('Tvs')"><div class="STING-WEB-Mobile-Ico" id="Tvs"><span class="STING-WEB-Tv_SVG"></span><span class="active-span">القنوات</span></div> </a>
+        <!-- STANDINGS -->
+    <a href="/standings/" onclick="setActive('Ranking')"><div class="STING-WEB-Mobile-Ico" id="Ranking"><span class="STING-WEB-Ranking_SVG"></span><span>الترتيب</span></div></a>
+        <!-- NEWS -->
+    <!-- <a href="/news/" onclick="setActive('News')"><div class="STING-WEB-Mobile-Ico" id="News"><span class="STING-WEB-News_SVG"></span><span>الأخبار</span></div></a> -->
+        <!-- SETTINGS -->
+    <a href="/settings/" onclick="setActive('Settings')"><div class="STING-WEB-Mobile-Ico" id="Settings"><span class="STING-WEB-Setting_SVG"></span><span>الإعدادات</span></div></a>
+</div>
     <script>
         function setActive(activeId) {
             const icons = document.querySelectorAll('.STING-WEB-Mobile-Ico');
